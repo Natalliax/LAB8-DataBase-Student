@@ -1,0 +1,52 @@
+﻿<Window x:Class="LAB8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LAB8"
+        mc:Ignorable="d"
+        Title="Payments" Height="250" Width="500" Closing="Window_Closing">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="5,2"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dGrid" Grid.Column="1" ItemsSource="{Binding}" AutoGenerateColumns ="False"
+                  RowHeaderWidth="50" LoadingRow="dGrid_LoadingRow" IsReadOnly="True">
+            <DataGrid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE9DEDE" Offset="0.003"/>
+                    <GradientStop Color="#FFEDD8D8" Offset="1"/>
+                </LinearGradientBrush>
+            </DataGrid.Background>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Surname"  Binding="{Binding FullName}" Width="*">
+                    <DataGridTextColumn.CellStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn >
+                <DataGridTextColumn Header="Age" Binding="{Binding Age}" />
+                <DataGridTextColumn Header="Payment" Binding="{Binding Payment}" />
+                <DataGridTextColumn Header="Group" Binding="{Binding GroupId}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel x:Name="stackButtons" Background="#FFCBC6C6" >
+           <Button x:Name="btnAdd" Click="btnAdd_Click" Margin="10 10" FontFamily="Kristen ITC" >
+         Add student</Button>
+
+            <Button x:Name="btnDelete" Click="btnDelete_Click" Margin="10 10" FontFamily="Kristen ITC">
+         Delete student</Button>
+
+            <Button x:Name="btnEdit" Click="btnEdit_Click" RenderTransformOrigin="0.576,3.112" Margin="10 10" FontFamily="Kristen ITC">
+         Edit student</Button> 
+  </StackPanel>
+   </Grid>
+    </Window>
